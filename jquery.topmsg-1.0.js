@@ -28,10 +28,10 @@
             domid:"JQ_TOP_MSG",
             msg:message ? message :""
         };
-        if (type) {
+        if ( type ) {
             defaults.background = "#48bb5e";
         }
-        if ( arg.click ) {
+        if ( arg ? arg.click : false ) {
         	defaults.click = true;
         }
         var options = $.extend(defaults, arg);
@@ -40,7 +40,6 @@
         var messageStyle = " width: 100%;position: absolute;height: " + options.height + "px;top: 0px;left: 0px;right: 0px;margin: 0px;color: " + options.color + ";font-weight: bold;font-size: " + options.fontsize + "px;text-align: center;padding: 10px 0px";
         var html = '<div id="' + options.domid + '" style="' + barStyle + '"><div style="' + overlayStyle + '">&nbsp;</div><div style="' + messageStyle + '">' + options.msg + "</div></div>";
         if ($("#" + options.domid).length > 0) {
-            // Hide already existing bars
             $("#" + options.domid).hide();
             $("#" + options.domid).slideUp(200, function() {
                 $("#" + options.domid).remove();
